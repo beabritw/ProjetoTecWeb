@@ -4,56 +4,60 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal - App de Tarefas</title>
-    <script type="module" src="/src/script.js"></script>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página Principal - App de Tarefas</title>
+  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="estilos.css" />
 
 </head>
 
 <body>
 
-    <nav class="cabecalho">
-        <div class="text-G">
-            GERENCIADOR DE TAREFAS:
-        </div>
-        <button id="add-task"> ADICIONAR TAREFAS </button>
-    </nav>
+  <nav class="cabecalho">
 
-    <main class="block-center">
+    <div class="text-G">GERENCIADOR DE TAREFAS:</div>
+    <button id="add-task" onclick="abrirPopup()">ADICIONAR TAREFAS</button>
 
-        <section class="block">
-            <div class="tiltle">
-                Pendentes
-            </div>
-            <div class="content">
-                <ul>
+  </nav>
 
-                </ul>
-            </div>
-        </section>
-        <section class="block">
-            <div class="tiltle">
-                Em andamento
-            </div>
-            <div class="content">
-                <ul>
+  <main class="block-center">
 
-                </ul>
-            </div>
-        </section>
-        <section class="block">
-            <div class="tiltle">
-                Concluidas
-            </div>
-            <div class="content">
-                <ul>
+    <section class="block">
+      <div class="tiltle">Pendentes</div>
+      <div class="content" id="lista-pendentes">
+        <ul class="spantask"></ul>
+      </div>
 
-                </ul>
-            </div>
-        </section>
-    </main>
+    </section>
+
+    <section class="block">
+
+      <div class="tiltle">Concluídas</div>
+      <div class="content" id="lista-concluidas">
+        <ul class="spantask"></ul>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <div id="popup" class="popup">
+
+    <div class="popup-conteudo">
+
+      <span class="fechar" onclick="fecharPopup()">&times;</span>
+      <h3>Adicionar nova tarefa</h3>
+
+      <form class="infsTask" onsubmit="adicionarTarefa(event)">
+        <input type="text" id="novaTarefa" placeholder="Digite o nome da sua tarefa..." required />
+        <button class="enviartask" type="submit">Adicionar</button>
+      </form>
+
+    </div>
+
+  </div>
 
 </body>
 
