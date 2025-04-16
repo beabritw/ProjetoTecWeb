@@ -1,64 +1,58 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Página Principal - App de Tarefas</title>
+  <title>App de Tarefas</title>
   <script src="index.js" defer></script>
   <link rel="stylesheet" href="estilos.css" />
-
 </head>
-
 <body>
 
-  <nav class="cabecalho">
-
-    <div class="text-G">GERENCIADOR DE TAREFAS:</div>
-    <button id="add-task" onclick="abrirPopup()">ADICIONAR TAREFAS</button>
-
+  <nav class="menu-navegacao">
+    <ul>
+      <li><a href="#" onclick="mostrarSecao('cadastro')">Cadastro</a></li>
+      <li><a href="#" onclick="mostrarSecao('tarefas')">Tarefas</a></li>
+    </ul>
   </nav>
 
-  <main class="block-center">
+  <!-- CADASTRO DE USUÁRIO -->
+  <section id="cadastro" class="secao">
+    <h2>Cadastro de Usuário</h2>
+    <form onsubmit="cadastrarUsuario(event)">
+      <input type="text" id="nomeUsuario" placeholder="Seu nome" required />
+      <input type="email" id="emailUsuario" placeholder="Seu email" required />
+      <button type="submit">Cadastrar</button>
+    </form>
+  </section>
 
-    <section class="block">
-      <div class="tiltle">Pendentes</div>
-      <div class="content" id="lista-pendentes">
-        <ul class="spantask"></ul>
-      </div>
+  <!-- LISTAGEM DE TAREFAS -->
+  <section id="tarefas" class="secao" style="display: none;">
+    <h2 id="boasVindas"></h2>
+    <button onclick="abrirPopup()">Adicionar Tarefa</button>
 
-    </section>
+    <div class="tarefas-box">
+      <h3>Pendentes</h3>
+      <ul id="lista-pendentes"></ul>
 
-    <section class="block">
-
-      <div class="tiltle">Concluídas</div>
-      <div class="content" id="lista-concluidas">
-        <ul class="spantask"></ul>
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <div id="popup" class="popup">
-
-    <div class="popup-conteudo">
-
-      <span class="fechar" onclick="fecharPopup()">&times;</span>
-      <h3>Adicionar nova tarefa</h3>
-
-      <form class="infsTask" onsubmit="adicionarTarefa(event)">
-        <input type="text" id="novaTarefa" placeholder="Digite o nome da sua tarefa..." required />
-        <button class="enviartask" type="submit">Adicionar</button>
-      </form>
-
+      <h3>Concluídas</h3>
+      <ul id="lista-concluidas"></ul>
     </div>
+  </section>
 
+  <!-- POPUP DE NOVA TAREFA -->
+  <div id="popup" class="popup">
+    <div class="popup-conteudo">
+      <span class="fechar" onclick="fecharPopup()">&times;</span>
+      <h3>Nova Tarefa</h3>
+      <form onsubmit="adicionarTarefa(event)">
+        <input type="text" id="tituloTarefa" placeholder="Título" required />
+        <textarea id="descricaoTarefa" placeholder="Descrição (opcional)"></textarea>
+        <input type="date" id="dataTarefa" />
+        <button type="submit">Adicionar</button>
+      </form>
+    </div>
   </div>
 
 </body>
-
 </html>

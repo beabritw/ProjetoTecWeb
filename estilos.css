@@ -1,139 +1,148 @@
 body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
 }
 
-button{
-    cursor: pointer;
-}
-
-input{
-    cursor: pointer;
-}
-  
-  .cabecalho {
-    height: 10%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ghostwhite;
-    gap: 50px;
-  }
-  
-  .block-center {
-    height: 85%;
-    width: 70%;
-    margin: auto;
-    padding: 16px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .block {
-    flex: 1;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 10px;
-  }
-  
-  .tiltle {
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .content {
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-  }
-  
-  #add-task {
-    height: 80%;
-    width: 10%;
-    cursor: pointer;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  #add-task:hover {
-    background-color: greenyellow;
-  }
-  
-  .text-G {
-    font-size: 30px;
-    font-weight: bold;
-  }
-  
-  /* POPUP */
-  
-  .popup {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .popup-conteudo {
-    position: relative;
-    background: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    height: 20%;
-    width: 20%;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .fechar {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-#novaTarefa{
-    padding: 2%;
-    width: 70%;
-}
-  
-.enviartask{
-    padding: 2%;
-}
-
-.infsTask{
-    margin-top: 15%;
-}
-
-li{
-  margin-top: 15px;
-  font-size: 25px;
+/* NAVBAR */
+.menu-navegacao ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
   background-color: ghostwhite;
-  border-radius: 15px;
-  width: 94%;
+  padding: 15px;
+  justify-content: center;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0 0 15px 15px;
 }
 
-#lista-pendentes li,
-#lista-concluidas li {
+.menu-navegacao li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.menu-navegacao li a:hover {
+  background-color: #e0e0e0;
+}
+
+/* SEÇÕES */
+.secao {
+  padding: 20px;
+}
+
+/* FORMULÁRIOS */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  border: none;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d1ffd1;
+}
+
+/* TAREFAS BOX */
+.tarefas-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #fdfdfd;
+}
+
+/* LISTAS */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: ghostwhite;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 10px;
+  font-size: 18px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-.checkbox {
-  margin-left: auto;
+li input[type="checkbox"] {
+  transform: scale(1.5);
   cursor: pointer;
-  transform: scale(2);
 }
 
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-conteudo {
+  position: relative;
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 500px) {
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li input[type="checkbox"],
+  li button {
+    margin-top: 5px;
+  }
+
+  .popup-conteudo {
+    width: 90%;
+  }
+}
